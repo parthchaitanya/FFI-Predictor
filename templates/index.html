@@ -1,1 +1,96 @@
-<h1>Welcome to home page</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fire Risk Predictor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .card { border-radius: 15px; }
+        .result-box { margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="card shadow p-4">
+        <h2 class="text-center mb-4">🔥 Forest Fire Risk Prediction</h2>
+
+        <form action="/predictdata" method="POST" class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label">Temperature (°C)</label>
+                <input type="number" step="any" name="Temperature" class="form-control"
+                       value="{{ old.Temperature if old else '' }}" required>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Relative Humidity (%)</label>
+                <input type="number" step="any" name="RH" class="form-control"
+                       value="{{ old.RH if old else '' }}" required>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Wind Speed (km/h)</label>
+                <input type="number" step="any" name="Ws" class="form-control"
+                       value="{{ old.Ws if old else '' }}" required>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Rainfall (mm)</label>
+                <input type="number" step="any" name="Rain" class="form-control"
+                       value="{{ old.Rain if old else '' }}" required>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Fine Fuel Moisture Code (FFMC)</label>
+                <input type="number" step="any" name="FFMC" class="form-control"
+                       value="{{ old.FFMC if old else '' }}" required>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Duff Moisture Code (DMC)</label>
+                <input type="number" step="any" name="DMC" class="form-control"
+                       value="{{ old.DMC if old else '' }}" required>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Initial Spread Index (ISI)</label>
+                <input type="number" step="any" name="ISI" class="form-control"
+                       value="{{ old.ISI if old else '' }}" required>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Fire Class (0 = Low, 1 = High)</label>
+                <input type="number" step="any" name="Classes" class="form-control"
+                       value="{{ old.Classes if old else '' }}" required>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Region (1 = Bejaia, 2 = Sidi Bel-abbes)</label>
+                <input type="number" step="any" name="Region" class="form-control"
+                       value="{{ old.Region if old else '' }}" required>
+            </div>
+
+            <div class="col-12 text-center mt-3">
+                <button type="submit" class="btn btn-primary px-5">Predict</button>
+            </div>
+        </form>
+
+        {% if results is not none %}
+    <div class="result-box text-center mt-4">
+        <h4 class="text-success">
+            Predicted Fire Risk Level:
+            {% if results is number %}
+                {{ results | round(2) }}
+            {% else %}
+                {{ results }}
+            {% endif %}
+        </h4>
+    </div>
+{% endif %}
+
+    </div>
+</div>
+
+</body>
+</html>
