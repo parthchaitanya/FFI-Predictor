@@ -2,8 +2,8 @@
 Using Regression Models on the Algerian Forest Fires Dataset
 
 ## 📌 Project Overview
-This project focuses on predicting the Forest Weather Index (FWI) using various regression algorithms.
-FWI is an important indicator used to assess fire danger levels based on meteorological conditions.
+This project focuses on predicting the Forest Fire Index (FFI) using various regression algorithms.
+FFI is an important indicator used to assess fire danger levels based on meteorological conditions.
 Using the Algerian Forest Fires dataset from Kaggle, the project explores data preprocessing, feature analysis, and multiple regression techniques to build an effective predictive model.
 
 ## 📂 Dataset
