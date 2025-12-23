@@ -1,4 +1,4 @@
-# 🌲 Forest Fire Index Prediction 
+# 🌲 Forest Fire Index Predictor
 Using Regression Models on the Algerian Forest Fires Dataset
 
 ## 📌 Project Overview
